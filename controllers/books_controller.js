@@ -8,8 +8,8 @@ router.get("/", function(req, res) {
     var hbsObject = {
       books: data
     };
-    /*console.log("one", data);
-    console.log("two", res);*/
+    // console.log("one", data);
+    // console.log("two", res);
 
     //res.send("hello world!!!!");
 
@@ -18,8 +18,8 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/books", function(req, res) {
-  console.log(req.body.name);
-  book.insertOne(req.body.name, function(result) {
+  console.log(req.body);
+  book.insertOne(req.body.title, function(result) {
     res.json({ id: result.insertId });
   });
 });

@@ -2,7 +2,9 @@ $(function() {
     $(".create-form").on("submit", function(event) {
         event.preventDefault();
         var bookName = {
-            name: $("#burg").val().trim()
+            title: $("#title").val().trim(),
+            author: $("#author").val().trim(),
+            summary: $("#summary").val().trim()
         };
         console.log(bookName);
         $.ajax("./api/books", {

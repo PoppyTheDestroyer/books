@@ -26,7 +26,7 @@ const orm = {
         });
     },
     insertOne: function(bookName, cb) {
-        var queryString = `INSERT INTO books (book_name, devoured) VALUES ("${bookName}", false);`;
+        var queryString = `INSERT INTO books (book_title, author, summary, devoured) VALUES ("${bookName.title}","${bookName.author}", "${bookName.summary}", false);`;
         console.log(queryString);
         connection.query(queryString, function (err, res) {
             if(err) throw err;

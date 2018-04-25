@@ -6,8 +6,9 @@ var book = {
             cb(res);
         });
     },
-    insertOne: function(bookTitle, cb) {
-        orm.insertOne(bookTitle, function(res) {
+    insertOne: function(title, author, summary, cb) {
+        console.log(title);
+        orm.insertOne(title, author, summary, function(res) {
             cb(res);
         });
     },
