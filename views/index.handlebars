@@ -2,13 +2,32 @@
 
 <img class="center" src="assets/img/burger.jpg" alt="Hamburger">
 <div class="row">
-    <ul class="col-md-4">
-        {{#each books}} {{#unless devoured}}
-        <li>{{this.book_title}}
-            <button class="devoured btn btn-info" data-id="{{id}}" data-devoured="eaten">Devour!</button><button data-id="{{id}}" class="delete btn btn-warning">Delete</button>
-        </li>
-        {{/unless}} {{/each}}
-    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Notes</th>
+                <th>Mark as Read</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        
+            {{#each books}} {{#unless devoured}}
+            <tr>
+            <td>{{this.book_title}}</td>
+            <td>{{this.author}}</td>
+            <td>{{this.summary}}</td>
+            <td>
+                <button class="devoured btn btn-info" data-id="{{id}}" data-devoured="eaten">Devour!</button>
+            </td>
+            <td>
+                <button data-id="{{id}}" class="delete btn btn-warning">Delete</button>
+            </td>
+            </tr>
+            {{/unless}} {{/each}}
+        
+    </table>
 
     <ul class="col-md-4">
         {{#each books}} {{#if devoured}}
@@ -27,7 +46,7 @@
         <label for="author">Author:</label>
         <input type="text" id="author" name="author">
         <br>
-        <label for="summary">Summary</label> 
+        <label for="summary">Summary</label>
         <textarea rows="5" id="summary" name="summary"></textarea>
     </div>
     <button class="createBook btn btn-info" type="submit">Add a Book</button>

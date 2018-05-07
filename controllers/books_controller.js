@@ -18,8 +18,8 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/books", function(req, res) {
-  console.log(req.body);
-  book.insertOne(req.body.title, function(result) {
+  //console.log(req.body);
+  book.insertOne(req.body, function(result) {
     res.json({ id: result.insertId });
   });
 });

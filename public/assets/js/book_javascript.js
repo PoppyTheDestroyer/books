@@ -6,7 +6,7 @@ $(function() {
             author: $("#author").val().trim(),
             summary: $("#summary").val().trim()
         };
-        console.log(bookName);
+        //console.log(bookName);
         $.ajax("./api/books", {
             type: "POST",
             data: bookName

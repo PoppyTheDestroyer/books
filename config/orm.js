@@ -19,8 +19,8 @@ const orm = {
         var queryString = "SELECT * FROM books;";
         connection.query(queryString, function(err, res) {
             if(err) throw err;
-            console.log(res);
-            console.log("crap");
+            // console.log(res);
+            // console.log("crap");
             cb(res);
             return res;
         });
@@ -30,7 +30,7 @@ const orm = {
         console.log(queryString);
         connection.query(queryString, function (err, res) {
             if(err) throw err;
-            console.log(res);
+            //console.log(res);
             cb(res);
         });
     },
