@@ -7,7 +7,7 @@ CREATE TABLE books (
     id INT AUTO_INCREMENT NOT NULL,
     book_title VARCHAR(60) NOT NULL,
     author VARCHAR(30) NOT NULL,
-    summary VARCHAR(300),
+    summary VARCHAR(100),
     devoured BOOLEAN NOT NULL,
     PRIMARY KEY(id)
 );

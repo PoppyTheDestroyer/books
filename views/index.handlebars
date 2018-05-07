@@ -1,53 +1,77 @@
-<h1>Burger Time!</h1>
+<h1>The Booklist</h1>
 
-<img class="center" src="assets/img/burger.jpg" alt="Hamburger">
 <div class="row">
-    <table>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Notes</th>
-                <th>Mark as Read</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        
+    <div class="col-md-7">
+        <h2>Books to Read</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Notes</th>
+                    <th>Mark as Read</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+
             {{#each books}} {{#unless devoured}}
-            <tr>
+            <tbody>
+                <tr>
+                    <td>{{this.book_title}}</td>
+                    <td>{{this.author}}</td>
+                    <td>{{this.summary}}</td>
+                    <td>
+                        <button class="devoured btn btn-primary" data-id="{{id}}" data-devoured="eaten">Devour!</button>
+                    </td>
+                    <td>
+                        <button data-id="{{id}}" class="delete btn btn-secondary">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+            {{/unless}} {{/each}}
+        </table>
+    </div>
+    <div class="col-md-4">
+        <h2>Add a Book</h2>
+        <form class="create-form">
+            <div class="form-group">
+                <label for="title">Book title</label>
+                <input class="input-group" type="text" id="title" name="title" autofocus>
+                <br>
+                <label for="author">Author</label>
+                <input class="input-group" type="text" id="author" name="author">
+                <br>
+                <label for="summary">Notes</label>
+                <textarea class="input-group" rows="5" id="summary" name="summary"></textarea>
+            </div>
+            <button class="createBook btn btn-primary" type="submit">Add a Book</button>
+        </form>
+    </div>
+</div>
+<h2>Books I've Read</h2>
+<div class="row"></div>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Notes</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    {{#each books}} {{#if devoured}}
+    <tbody>
+        <tr>
             <td>{{this.book_title}}</td>
             <td>{{this.author}}</td>
-            <td>{{this.summary}}</td>
-            <td>
-                <button class="devoured btn btn-info" data-id="{{id}}" data-devoured="eaten">Devour!</button>
+            <td class="notes">
+                <p>{{this.summary}}</p>
             </td>
             <td>
-                <button data-id="{{id}}" class="delete btn btn-warning">Delete</button>
+                <button data-id="{{id}}" class="delete btn btn-secondary">Delete</button>
             </td>
-            </tr>
-            {{/unless}} {{/each}}
-        
-    </table>
-
-    <ul class="col-md-4">
-        {{#each books}} {{#if devoured}}
-        <li>{{this.book_title}}
-            <button class="delete btn btn-warning" data-id="{{id}}">Delete</button>
-        </li>
-        {{/if}} {{/each}}
-    </ul>
+        </tr>
+    </tbody>
+    {{/if}} {{/each}}
+</table>
 </div>
-<h2>Add a Book</h2>
-<form class="create-form">
-    <div class="form-group">
-        <label for="title">Book title:</label>
-        <input type="text" id="title" name="title">
-        <br>
-        <label for="author">Author:</label>
-        <input type="text" id="author" name="author">
-        <br>
-        <label for="summary">Summary</label>
-        <textarea rows="5" id="summary" name="summary"></textarea>
-    </div>
-    <button class="createBook btn btn-info" type="submit">Add a Book</button>
-</form>
